@@ -1,9 +1,5 @@
 基于 https://github.com/urfave/cli 进行开发，快速构建app项目脚手架。
 
-### 二进制下载
-
-https://github.com/itchin/go-cli/releases
-
 ### 部署说明
 
 需安装golang开发环境
@@ -11,10 +7,7 @@ https://github.com/itchin/go-cli/releases
 ```
 git clone https://github.com/itchin/go-cli
 
-# 下载所需组件
-go mod vendor
-
-# 配置env.ini后，安装go-cli
+# 配置env.ini，安装go-cli
 go install go-cli.go
 
 # 构建项目脚手架
