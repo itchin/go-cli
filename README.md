@@ -1,4 +1,4 @@
-基于 https://github.com/urfave/cli 进行开发，快速构建app项目脚手架。
+基于 https://github.com/urfave/cli 进行开发，快速构建golang application项目脚手架。
 
 ### 部署说明
 
