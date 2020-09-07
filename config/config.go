@@ -1,27 +1,8 @@
 package config
 
-import (
-    "fmt"
-    "gopkg.in/ini.v1"
-    "os"
+const (
+	// 模板框架所在目录
+	DEMO_PATH string = "D:/goProject/go-cli/gin-demo"
+	// 框架原包名
+	DEMO_PKG_NAME string = "github.com/itchin/gin-demo"
 )
-
-var (
-    DEMO_PATH string
-    DEMO_PKG_NAME string
-    PKG_NAME string
-)
-
-func init()  {
-    cfg, err := ini.Load("env.ini")
-    if err != nil {
-        fmt.Printf("Fail to read config.ini: %v", err)
-        os.Exit(1)
-    }
-
-    section := cfg.Section("")
-
-    DEMO_PATH = section.Key("DEMO_PATH").String()
-    DEMO_PKG_NAME = section.Key("DEMO_PKG_NAME").String()
-    PKG_NAME = section.Key("PKG_NAME").String()
-}
