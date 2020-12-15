@@ -1,4 +1,4 @@
-基于 https://github.com/urfave/cli 进行开发，用于快速构建app项目脚手架。
+基于 https://github.com/urfave/cli 进行开发，利用模板框架，快速构建app项目脚手架。
 
 ### 二进制下载
 
