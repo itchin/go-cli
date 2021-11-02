@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/itchin/gin-demo/helper/config"
-	"github.com/itchin/gin-demo/router"
+	"gin-demo/config"
+	"gin-demo/router"
 	"github.com/gin-gonic/gin"
 )
 

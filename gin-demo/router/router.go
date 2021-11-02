@@ -1,7 +1,7 @@
 package router
 
 import (
-	"github.com/itchin/gin-demo/controller"
+	"gin-demo/controller"
 	"github.com/gin-gonic/gin"
 )
 

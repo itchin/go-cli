@@ -1,4 +1,4 @@
-module github.com/itchin/gin-demo
+module gin-demo
 
 go 1.13
 

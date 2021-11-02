@@ -1,8 +1,8 @@
 package service
 
 import (
-	"github.com/itchin/gin-demo/helper/orm"
-	"github.com/itchin/gin-demo/model"
+	"gin-demo/helper/orm"
+	"gin-demo/model"
 )
 
 type tool struct{}

@@ -1,8 +1,8 @@
-package orm
+package database
 
 import (
 	"fmt"
-	"github.com/itchin/gin-demo/helper/config"
+	"gin-demo/config"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/go-xorm/xorm"

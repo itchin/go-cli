@@ -1,5 +1,5 @@
 package controller
 
-import "github.com/itchin/gin-demo/helper"
+import "gin-demo/utils"
 
 var Response helper.Response

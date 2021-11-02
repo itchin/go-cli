@@ -1,7 +1,7 @@
 package helper
 
 import (
-	"github.com/itchin/gin-demo/model"
+	"gin-demo/model"
 	"github.com/gin-gonic/gin"
 )
 

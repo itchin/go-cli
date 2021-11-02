@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"github.com/itchin/gin-demo/service"
+	"gin-demo/service"
 	"github.com/gin-gonic/gin"
 )
 

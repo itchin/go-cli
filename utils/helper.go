@@ -9,6 +9,7 @@ import (
     "strings"
 )
 
+// IsDirExists
 // 判断目录是否存在
 func IsDirExists(fileAddr string)bool{
     s,err := os.Stat(fileAddr)
@@ -18,6 +19,7 @@ func IsDirExists(fileAddr string)bool{
     return s.IsDir()
 }
 
+// CopyDir
 /**
  * 拷贝文件夹,同时拷贝文件夹中的文件
  * @param srcPath  		需要拷贝的文件夹路径: D:/test
