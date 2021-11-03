@@ -28,24 +28,22 @@ func IsDirExists(fileAddr string)bool{
 func CopyDir(srcPath string, destPath string, demoPkgName string, pkgName string) error {
     //检测目录正确性
     if srcInfo, err := os.Stat(srcPath); err != nil {
+        //路径不存在
         fmt.Println(err.Error())
         return err
-    } else {
-        if !srcInfo.IsDir() {
-            e := errors.New("srcPath not exist")
-            fmt.Println(e.Error())
-            return e
-        }
+    } else if !srcInfo.IsDir() {
+        //路径为文件，不是目录
+        e := errors.New("scrPath is not a dir")
+        fmt.Println(e.Error())
+        return e
     }
     if destInfo, err := os.Stat(destPath); err != nil {
         fmt.Println(err.Error())
         return err
-    } else {
-        if !destInfo.IsDir() {
-            e := errors.New("destInfo not exist")
-            fmt.Println(e.Error())
-            return e
-        }
+    } else if !destInfo.IsDir() {
+        e := errors.New("destInfo not exist")
+        fmt.Println(e.Error())
+        return e
     }
 
     err := filepath.Walk(srcPath, func(path string, f os.FileInfo, err error) error {
@@ -53,13 +51,16 @@ func CopyDir(srcPath string, destPath string, demoPkgName string, pkgName string
             return err
         }
         if !f.IsDir() {
-            path := strings.Replace(path, "\\", "/", -1)
+            path = strings.Replace(path, "\\", "/", -1)
+            srcPath = strings.Replace(srcPath, "\\", "/", -1)
             // 过滤模板框架的.git目录
             if strings.Contains(path, "/.git/") {
                 return nil
             }
             destNewPath := strings.Replace(path, srcPath, destPath, -1)
+            //fmt.Println(path, srcPath, destPath)
             //fmt.Println("复制文件:" + path + " 到 " + destNewPath)
+            //fmt.Println(path, destNewPath, demoPkgName, pkgName)
             err = copyAndRelaceFile(path, destNewPath, demoPkgName, pkgName)
             if err != nil {
                 panic(err)
