@@ -1,0 +1,4 @@
+[APP]
+DEMO_PATH = D:\project\go-cli\gin-demo
+DEMO_PKG_NAME = gin-demo
+PKG_NAME = myapp

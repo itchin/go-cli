@@ -1,9 +1,9 @@
 module github.com/itchin/go-cli
 
-go 1.14
+go 1.16
 
 require (
-	github.com/smartystreets/goconvey v1.6.4 // indirect
+	github.com/stretchr/testify v1.7.0 // indirect
 	github.com/urfave/cli v1.22.4
-	gopkg.in/ini.v1 v1.60.2
+	gopkg.in/ini.v1 v1.63.2
 )

@@ -7,6 +7,7 @@ import (
     "os"
     "path/filepath"
     "strings"
+    "github.com/itchin/go-cli/config"
 )
 
 // IsDirExists
@@ -51,16 +52,13 @@ func CopyDir(srcPath string, destPath string, demoPkgName string, pkgName string
             return err
         }
         if !f.IsDir() {
-            path = strings.Replace(path, "\\", "/", -1)
-            srcPath = strings.Replace(srcPath, "\\", "/", -1)
+            path = strings.ReplaceAll(path, "\\", "/")
+            srcPath = strings.ReplaceAll(srcPath, "\\", "/")
             // 过滤模板框架的.git目录
             if strings.Contains(path, "/.git/") {
                 return nil
             }
-            destNewPath := strings.Replace(path, srcPath, destPath, -1)
-            //fmt.Println(path, srcPath, destPath)
-            //fmt.Println("复制文件:" + path + " 到 " + destNewPath)
-            //fmt.Println(path, destNewPath, demoPkgName, pkgName)
+            destNewPath := strings.ReplaceAll(path, srcPath, destPath)
             err = copyAndRelaceFile(path, destNewPath, demoPkgName, pkgName)
             if err != nil {
                 panic(err)
@@ -79,26 +77,37 @@ func copyAndRelaceFile(src, dest, demoPkgName, pkgName string) (err error) {
     //分割path目录
     destSplitPathDirs := strings.Split(dest, "/")
 
-    //检测时候存在目录
+    //创建目录
     destSplitPath := ""
+    appPath := config.PATH
+    fmt.Println("destSplitPathDirs:", destSplitPathDirs, "destSplitPath:", destSplitPath)
     for index, dir := range destSplitPathDirs {
         if index < len(destSplitPathDirs)-1 {
-            destSplitPath = destSplitPath + dir + "/"
-            b, _ := pathExists(destSplitPath)
+            destSplitPath = appPath + dir + "/"
+            fmt.Println("destSplitPath:", destSplitPath)
+
+            b, err_ := pathExists(destSplitPath)
+            if err_ != nil {
+                err = err_
+                fmt.Println(err)
+                return
+            }
             if b == false {
+                //修复现场fileimport系统bug
                 //fmt.Println("创建目录:" + destSplitPath)
                 //创建目录
-                err := os.Mkdir(destSplitPath, os.ModePerm)
+                err = os.Mkdir(destSplitPath, os.ModePerm)
                 if err != nil {
                     fmt.Println(err)
+                    return
                 }
             }
         }
     }
-    dstFile, err := os.Create(dest)
+    dstFile, err := os.Create(appPath + dest)
     if err != nil {
-        fmt.Println(err.Error())
-        return
+        fmt.Println("appPath:", appPath, "dest:", dest)
+        panic(err)
     }
     defer dstFile.Close()
 
