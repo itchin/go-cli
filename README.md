@@ -1,4 +1,4 @@
-基于 https://github.com/urfave/cli 进行开发，利用模板框架，快速构建app项目脚手架。
+根据模板框架，快速生成app项目。
 
 ### 二进制下载
 
@@ -17,7 +17,7 @@ go mod vendor
 # 修改config/config.go中配置，安装go-cli
 go install go-cli.go
 
-# 构建项目脚手架
+# 生成项目
 go-cli api --dir myapp --package github.com/itchin/myapp
 ```
 
